@@ -1,5 +1,3 @@
-package com.bham.pij.assignments.twit;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,24 +19,17 @@ public class TweetCleaner {
 	}
 
 	public TweetCleaner() throws IOException {
-
 		loadRaw();
-
 		clean();
-
 		saveClean();
 	}
 
 	private void clean() {
 
 		for (String line: raw) {
-
 			String cln = clean(line);
-
 			if (cln != null) {
-
 				String[] toks = cln.split(" ");
-
 				for (String s: toks) {
 					addClean(s);			
 				}	
@@ -55,32 +46,22 @@ public class TweetCleaner {
 		String cleanTweet = "";
 
 		for (int i = 0; i < tokens.length; i ++) {
-
-			if (basicFilter(tokens[i])) {
-
+			if (basicFilter(tokens[i]))
 				filteredTokens.add(tokens[i]);
-			}
 		}
 
 		for (int i = 0; i < filteredTokens.size(); i++) {
-
 			String validToken = characterFilter(filteredTokens.get(i));
-
-			if (!validToken.isEmpty()) {
-
+			if (!validToken.isEmpty()) 
 				validTokens.add(validToken);
-			}
 		}
 
-		for (int i = 0; i < validTokens.size(); i++) {
-
+		for (int i = 0; i < validTokens.size(); i++) 
 			cleanTweet = cleanTweet + validTokens.get(i) + " ";
-		}
-
-		if (cleanTweet.isEmpty()) {
-
+		
+		if (cleanTweet.isEmpty()) 
 			return null;
-		}
+		
 
 		return cleanTweet;
 	}
@@ -90,15 +71,13 @@ public class TweetCleaner {
 		String bannedCharacters = ("@#0123456789");
 		String [] tokens = input.split("");
 
-		if (input.equalsIgnoreCase("rt") || input.contains("https") || input.equals("!") || input.equals("?")) {
-
+		if (input.equalsIgnoreCase("rt") || input.contains("https") 
+			|| input.equals("!") || input.equals("?"))
 			return false;
-		}
+		
 
 		for (int i = 0; i < tokens.length; i++) {
-
 			if (bannedCharacters.contains(tokens[i])) {
-
 				return false;
 			}
 		}
@@ -106,27 +85,23 @@ public class TweetCleaner {
 	}
 // splits up input and rebuilds it with unvalid characters removed
 	public String characterFilter(String input) {
-
 		String validCharacters = ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!?'‘’“”\"");
 		String cleanToken = "";
 		String [] tokens = input.split("");
 
 		for (int i = 0; i < tokens.length; i++) {
-
-			if (validCharacters.contains(tokens[i])) {
+			if (validCharacters.contains(tokens[i])) 
 				cleanToken = cleanToken + tokens[i];
-			}
+			
 		}
 		return cleanToken;
 	}
 
 	private void addClean(String clean) {
-
 		cleaned.add(clean);
 	}
 
 	private void saveClean() throws FileNotFoundException {
-
 		PrintWriter pw = new PrintWriter("cleaned.txt");
 
 		for (String s: cleaned) {
@@ -134,21 +109,15 @@ public class TweetCleaner {
 		}
 
 		pw.close();
-
 	}
 
 	private void loadRaw() throws IOException {
-
 		BufferedReader br = new BufferedReader(new FileReader(new File("donald.txt")));
 
 		String line = "";
-
-		while ((line = br.readLine())!= null) {
-
+		while ((line = br.readLine())!= null)
 			raw.add(line);
-
-		}
-
+		
 		br.close();
 	}
 }

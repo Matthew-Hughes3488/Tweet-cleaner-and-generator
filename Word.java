@@ -1,5 +1,3 @@
-package com.bham.pij.assignments.twit;
-
 import java.util.ArrayList;
 import java.util.Random;
 
