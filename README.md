@@ -24,4 +24,4 @@ a single word and is distinct from the word “really”. You don’t need to co
 than one question mark at the end of a word.
 Do not remove possessive inverted commas, e.g. in the words“Biden’s”, “America’s”, “James’ ”.
 
-The cleaner is used to generate Tweets in the style of Donald Trump
+The generator is used to generate Tweets in the style of Donald Trump
