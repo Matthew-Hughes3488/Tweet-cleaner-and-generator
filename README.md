@@ -1,5 +1,5 @@
 # Tweet-cleaner-and-generator
-A Tweet cleaner that receives raw Twitter tweet data as input and returns that input with particular elements removed.
+A Tweet cleaner that receives raw Twitter tweet data as input and returns that input with particular elements removed. Need to reupload a file containing the tweet data
 
 The elements removed are as follows
 
